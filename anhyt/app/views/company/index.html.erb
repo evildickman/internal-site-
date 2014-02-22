@@ -1,0 +1,87 @@
+<body bgcolor="#8BB2E4" link="#000000">
+   <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="row-fluid">
+            <div>
+              <h2><% 4.times do%>&nbsp;<% end %>关于安慧</h2>
+              <p><% 10.times do%>&nbsp;<% end %>北京安慧音通科技有限责任公司（Beijing Anhuiyintong Technology Co.,Ltd.），简称“安慧科技”，是专业从事智能语音信号处理、</p>
+              	 <% 4.times do%>&nbsp;<% end %>数字信号处理的高新技术企业，为用户提供完善的解决方案和配套产品。安慧科技作为专业的无线通讯、智能语音识别领域技术服务提供商,</p>
+              	 <% 4.times do%>&nbsp;<% end %>以强大的技术支持体系聚焦行业级客户。致力于以客户需求为导向,打造客制化服务体系，为客户提供专业技术解决方案和配套产品。多年来</p>
+              	 <% 4.times do%>&nbsp;<% end %>先后承接党、政机关等科研任务，积累了大量核心技术和自主知识产权，产品广泛应用于政府、安全、医疗等国家部委和单位机构，得到应用</p>
+              	 <% 4.times do%>&nbsp;<% end %>单位的一致认可和赞誉。</p>
+              <p><% 4.times do%>&nbsp;<% end %><a class="btn btn-default btn-xs" href="/company/info" role="button">更多  &raquo;</a></p>
+            </div>
+            
+            <div class="col-6 col-sm-6 col-lg-12">
+                <img class="img-rounded" data-src="holder.js/140x140" alt="140x140" style="width: 200px; height: 140px;" src="/assets/1.jpg">
+                <img class="img-rounded" data-src="holder.js/140x140" alt="140x140" style="width: 200px; height: 140px;" src="/assets/2.jpg">
+                <img class="img-rounded" data-src="holder.js/140x140" alt="140x140" style="width: 200px; height: 140px;" src="/assets/3.jpg">
+                <img class="img-rounded" data-src="holder.js/140x140" alt="140x140" style="width: 200px; height: 140px;" src="/assets/4.jpg">         
+            </div>  
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3><% 4.times do%>&nbsp;<% end %>公司动态</h3>
+                <ul>
+                 <% @posts.each do |post|%>
+                   <li><p><%=link_to truncate(post.title,length:15),post%><br/><small>(<%=post.created_at.to_s[0,10]%>)</small></p></li>             
+                 <%end%> 
+                </ul>         
+                <p><% 4.times do%>&nbsp;<% end %><a class="btn btn-primary btn-xs" href="/company/posts_list" role="button">更多  &raquo;</a></p>
+            </div>
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3><% 4.times do%>&nbsp;<% end %>公司项目</h3>
+                <ul>
+                  <% @project_posts.each do |p_post|%>
+                    <li><p><%=link_to truncate(p_post.title,length:15),p_post%><br/><small>(<%=p_post.created_at.to_s[0,10]%>)</small></p></li>             
+                  <%end%> 
+                </ul>         
+                <p><% 4.times do%>&nbsp;<% end %><a class="btn btn-primary btn-xs" href="/company/project_posts_list" role="button">更多  &raquo;</a></p>
+            </div>
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h3><% 4.times do%>&nbsp;<% end %>员工活动</h3>
+                <ul>
+                  <% @activity_posts.each do |a_post|%>
+                    <li><p><%=link_to truncate(a_post.title,length: 15),a_post%><br/><small>(<%=a_post.created_at.to_s[0,10]%>)</small></p></li>
+                  <%end%>
+                </ul>
+                <p><% 4.times do%>&nbsp;<% end %><a class="btn btn-primary btn-xs" href="/company/activity_posts_list" role="button">更多  &raquo;</a></p>
+            </div>     
+          </div>        
+        </div>
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><br/><br/>
+           <div>
+              <img class="img-polaroid" data-src="holder.js/140x140" alt="140x140" style="width: 250px; height: 300px;" src="/assets/logo.png">
+           </div><br/><br/>    
+           <div class="list-group ">
+          	 <%=form_tag("/search",method:"get",class:"form-search") do %>
+          	    <%=label_tag(:q,"搜索:")%>
+          	    <%=text_field_tag(:q)%>
+          	    <%=submit_tag("搜索",class:"btn btn-primary btn-sm")%>
+          	<%end%>
+            <h4><b><a href="#" class="list-group-item active">项目管理应用</a></b></h4>
+                <%=link_to "jira登录","http://192.168.1.219:8080/",class:"list-group-item btn-lg"%>
+                <%=link_to "spark登录","http://192.168.1.215:8000/",class:"list-group-item btn-lg"%>
+            <h4><b><a href="#" class="list-group-item active">最新动态</a></b></h4>
+                <%= link_to truncate(Post.first.title,length:15),Post.first,class:"list-group-item btn-lg" %>
+                <%= link_to truncate(ProjectPost.first.title,length:15),ProjectPost.first,class:"list-group-item btn-lg" %>
+                <%= link_to truncate(ActivityPost.first.title,length:15),ActivityPost.first,class:"list-group-item btn-lg" %>
+            <h4><b><a href="#" class="list-group-item active">网站管理</a></b></h4>
+                <%=link_to "管理员入口","/company/admin_index",class: "list-group-item btn-lg"%>
+                <%=link_to "网站建议","/company/admin_index",class: "list-group-item btn-lg"%>   
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy;版权所有：北京安慧音通科技有限责任公司  2014</p>
+      </footer>
+    </div>
+  </body>
+</html>

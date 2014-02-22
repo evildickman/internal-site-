@@ -1,0 +1,48 @@
+<center>
+<h1>员工信息</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr align="center" class="success">
+      <th>姓名</th>
+      <th>登录名</th>
+      <th>登录密码</th>
+      <th>性别</th>
+      <th>年龄</th>
+      <th>邮箱</th>
+      <th>电话</th>
+      <th>QQ</th>
+      <th>地址</th>
+      <th>备注</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staffs.each do |staff| %>
+      <tr>
+        <td><%= staff.name %></td>
+        <td><%= staff.ename %></td>
+        <td><%= staff.password %></td>
+        <td><%= staff.sex %></td>
+        <td><%= staff.age %></td>
+        <td><%= staff.email %></td>
+        <td><%= staff.phone %></td>
+        <td><%= staff.QQ %></td>
+        <td><%= staff.address %></td>
+        <td><%= staff.remark %></td>
+        <td><%= link_to '查看', staff %></td>
+        <td><%= link_to '编辑', edit_staff_path(staff) %></td>
+        <td><%= link_to '删除', staff, method: :delete, data: { confirm: '确定删除?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新建员工信息', new_staff_path,class:"btn btn-primary btn-lg" %>
+</center>
+

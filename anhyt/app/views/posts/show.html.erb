@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div class="col-lg-8 col-md-offset-3">
+  <p><h2><strong><%= @post.title %></strong></h2>
+
+  <p><% 70.times do%>&nbsp;<% end %><%=raw @post.content %></p><br/> 
+     
+  <p><% 70.times do%>&nbsp;<% end %>
+     <strong>标签:</strong>
+     <%= @post.slug %>
+  </p>
+
+  <%= link_to '编辑', edit_post_path(@post),class:"btn btn-mini btn-primary"%> |
+  <%= link_to '返回', posts_path,class:"btn btn-mini btn-primary" %>     
+</div>

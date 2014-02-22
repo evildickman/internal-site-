@@ -1,0 +1,27 @@
+<%= javascript_include_tag "ckeditor/init" %>
+<%= form_for(@project_post) do |f| %>
+  <% if @project_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_post.errors.count, "error") %> prohibited this project_post from being saved:</h2>
+      <ul>
+        <% @project_post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+ <% end %>
+
+  <div class="field">
+    <%= f.label :项目名称 %><br>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :项目内容 %><br>
+    <%= f.text_area :content,class: "ckeditor" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="col-lg-8 col-md-offset-2">
+<h1>通知列表</h1>
+  <tbody>
+    <% @posts.each do |post| %>
+      <h3><li><%=link_to post.title, post%></li></h3>
+    <% end %>
+    <div class="apple_pagination">
+       <div clas="page_info">
+          <%= page_entries_info @posts %>
+       </div>
+          <%= will_paginate @posts,:previous_label => '上一页',:next_label => '下一页',:container => false %>
+       </div>
+     </div>
+  </tbody>
+</div>

@@ -1,0 +1,15 @@
+<div class="table table-striped col-lg-8">
+<h2>项目列表</h2>
+  <tbody>
+    <% @project_posts.each do |p_post| %>
+      <h3><li><%=link_to p_post.title, p_post%></li></h3>
+    <% end %>
+    <div class="apple_pagination">
+      <div clas="page_info">
+        <%= page_entries_info @project_posts %>
+      </div>
+        <%= will_paginate @project_posts,:previous_label => '上一页',:next_label => '下一页',:container => false %>
+      </div>
+     </div>
+  </tbody>
+</div>

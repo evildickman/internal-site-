@@ -1,0 +1,58 @@
+<center>
+  <div class="jumbotron-show">
+   	
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>姓名:</strong>
+    <%= @staff.name %>
+  </p>
+
+  <p>
+    <strong>登录名:</strong>
+    <%= @staff.ename %>
+  </p>
+
+  <p>
+    <strong>登录密码:</strong>
+    <%= @staff.password %>
+  </p>
+
+  <p>
+    <strong>性别:</strong>
+    <%= @staff.sex %>
+  </p>
+
+  <p>
+    <strong>年龄:</strong>
+    <%= @staff.age %>
+  </p>
+
+  <p>
+    <strong>邮箱:</strong>
+    <%= @staff.email %>
+  </p>
+
+  <p>
+    <strong>电话:</strong>
+    <%= @staff.phone %>
+  </p>
+
+  <p>
+    <strong>QQ:</strong>
+    <%= @staff.QQ %>
+  </p>
+
+  <p>
+    <strong>地址:</strong>
+    <%= @staff.address %>
+  </p>
+
+  <p>
+    <strong>地址:</strong>
+    <%= @staff.ename %>
+  </p>
+
+  <%= link_to '编辑', edit_staff_path(@staff),class:"btn btn-mini btn-primary" %> |
+  <%= link_to '返回', staffs_path,class:"btn btn-mini btn-primary" %>
+  </div>
+</center>

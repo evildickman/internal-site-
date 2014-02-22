@@ -1,0 +1,32 @@
+<h2>通知列表</h2>
+
+<table class="table table-striped col-lg-8">
+  <thead>
+    <tr class="success">
+      <th>标题</th>
+      <th>内容</th>
+      <th>标签</th>
+      <% 30.times do%><th></th><%end%>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr class="success">
+        <td><%= truncate(post.title,length: 10)%></td>
+        <td><%= raw truncate(post.content.gsub(/<.*?>/,''),length: 15) %></td>
+        <td><%= post.slug %></td>
+        <% 30.times do%><td></td><%end%>
+        <td class="btn btn-sm">
+        <li><%= link_to '查看', post %></li>
+        <li><%= link_to '编辑', edit_post_path(post) %></li>
+        <li><%= link_to '删除', post, method: :delete, data: { confirm: '确定删除该通知?' } %></li>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新建通知', new_post_path ,class: "btn btn-primary"%>

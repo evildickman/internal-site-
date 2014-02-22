@@ -1,0 +1,30 @@
+<h1>项目列表</h1>
+<table class="table table-striped col-lg-8">
+  <thead>
+    <tr class="success">
+      <th>标题</th>
+      <th>内容</th>
+      <th>创建时间</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_posts.each do |project_post| %>
+      <tr >
+        <td><%= truncate(project_post.title,length: 15) %></td>
+        <td><%= raw truncate(project_post.content.gsub(/<.*?>/,''),length: 15) %></td>
+        <td><%= project_post.created_at.to_s[0,19] %></td>
+        <td><%= link_to '查看项目', project_post %></td>
+        <td><%= link_to '编辑项目', edit_project_post_path(project_post) %></td>
+        <td><%= link_to '删除项目', project_post, method: :delete, data: { confirm: '确定删除该项目?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新建项目', new_project_post_path,class: "btn btn-primary" %>
